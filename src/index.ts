@@ -37,8 +37,9 @@ const getRepos = async (user: String) => {
 
 const getLanguages = (user: String) => {
   getRepos(user).then((repos: any) => {
+    console.log('REPS', repos);
     const languages = repos.reduce((acc: any, repo: any) => {
-      Object.keys(repo.languages).forEach((language) => {
+      Object.keys(repo.languages).map((language) => {
         if (acc[language]) {
           acc[language] += repo.languages[language];
         } else {
@@ -53,6 +54,7 @@ const getLanguages = (user: String) => {
 
     return languages;
   });
+}
 
 
 /*   try {
